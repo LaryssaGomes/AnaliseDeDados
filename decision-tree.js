@@ -392,25 +392,3 @@ var dt = (function () {
     exports.RandomForest = RandomForest;
     return exports;
 })();
-
-const excelToJson = require('convert-excel-to-json');
-const treinamento = excelToJson({
-    sourceFile: 'cancerdados.xlsx',
-    range: 'A1:J25'
-    
-});
-// Configuration
-var config = {
-    trainingSet: treinamento.Plan1, 
-    categoryAttr: 'J', 
-    ignoredAttributes: ['A']
-};
-const teste = excelToJson({
-    sourceFile: 'cancerdados.xlsx',
-    range: 'A258:J258',
-    
-});
-
-var decisionTree = new dt.DecisionTree(config);
-var decisionTreePrediction = decisionTree.predict(teste.Plan1);
-console.log(decisionTreePrediction);
