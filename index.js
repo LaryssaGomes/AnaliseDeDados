@@ -393,24 +393,21 @@ var dt = (function () {
     return exports;
 })();
 
-const excelToJson = require('convert-excel-to-json');
-const treinamento = excelToJson({
-    sourceFile: 'cancerdados.xlsx',
-    range: 'A1:J25'
-    
-});
+
+const treinamento = 
+   [{ Class:"no recurrence events", age: "30 39", menopause: "premeno", tumorsize: "30 34", invnodes: "0 2", nodecaps: "no", degmalig: 3, breast: "left", breastquad: "left_low", irradiat: "no" },
+    { Class:"no recurrence events", age: "40 49", menopause: "premeno", tumorsize: "20 24", invnodes: "0 2", nodecaps: "no", degmalig: 2, breast: "right", breastquad: "right_up", irradiat: "no" },
+    { Class:"no recurrence events", age: "40 49", menopause: "premeno", tumorsize: "20 24", invnodes: "0 2", nodecaps: "no", degmalig: 2, breast: "left", breastquad: "left_low", irradiat: "no" },
+    { Class:"no recurrence events", age: "40 49", menopause: "premeno", tumorsize: "40 44", invnodes: "3 5", nodecaps: "yes", degmalig: 3, breast: "right", breastquad: "left_up", irradiat: "yes" }];
 // Configuration
 var config = {
-    trainingSet: treinamento.Plan1, 
-    categoryAttr: 'J', 
-    ignoredAttributes: ['A']
+    trainingSet: treinamento, 
+    categoryAttr: 'irradiat',
+    ignoredAttributes: ['Class']
 };
-const teste = excelToJson({
-    sourceFile: 'cancerdados.xlsx',
-    range: 'A258:J258',
-    
-});
+const teste = {Class:"no recurrence events", age: "40 49", menopause: "premeno", tumorsize: "40 44", invnodes: "3 5", nodecaps: "yes", degmalig: 3, breast: "right", breastquad: "left_up"};
 
 var decisionTree = new dt.DecisionTree(config);
-var decisionTreePrediction = decisionTree.predict(teste.Plan1);
+var decisionTreePrediction = decisionTree.predict(teste);
+
 console.log(decisionTreePrediction);
