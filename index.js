@@ -10,12 +10,12 @@ var config = {
 
 const teste = {
   Class: "recurrence events",
-  age: "40 49",
+  age: "30 34",
   menopause: "premeno",
   tumorsize: "25 29",
   invnodes: "0 2",
   nodecaps: "no",
-  degmalig: 2,
+  degmalig: 3,
   breast: "right",
   breastquad: "left_low",
 };
